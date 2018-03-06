@@ -3,6 +3,7 @@ package com.estafet.microservices.scrum.basic.ui.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -31,6 +32,7 @@ public class ProjectService {
 
 	@SuppressWarnings("rawtypes")
 	public List<Project> getProjects() {
+		System.out.println(System.getenv("PROJECT_GATEWAY_SERVICE_URI"));
 		List objects = restTemplate.getForObject(System.getenv("PROJECT_GATEWAY_SERVICE_URI") + "/projects",
 				List.class);
 		List<Project> projects = new ArrayList<Project>();
